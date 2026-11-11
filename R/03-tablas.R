@@ -11,6 +11,11 @@ pill <- function(cat) {
   ifelse(is.na(k), "", paste0("<span class='pill p", k, "'>", cat, "</span>"))
 }
 
+pill_corta <- function(cat) {
+  k <- match(cat, niveles_bio)
+  ifelse(is.na(k), "", paste0("<span class='pill p", k, "' title='", cat, "'>", c("Bio", "Parcial", "Fuera")[k], "</span>"))
+}
+
 # Cuadro bioeconómico de oferta o utilización
 cuadro_bio_html <- function(t, va = NULL) {
   otras <- setdiff(names(t), c("Bio", "Fila", COLS_ACT, "Total"))

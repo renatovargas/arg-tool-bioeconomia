@@ -2262,7 +2262,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "a1b5feb32c49b1b84c91a8e4cde82322"
+      "checksum": "cbb98d4960f64d6c892b98257f0f85d9"
     },
     "data/arg_lookups.xlsx": {
       "checksum": "179bfeb722bc5b7838424f81f775e0ae"
@@ -2283,7 +2283,7 @@
       "checksum": "1ea831fdf11dc3e7fecbbcd8266b2852"
     },
     "R/03-tablas.R": {
-      "checksum": "4ce0b88e53e986b9982163f205357f27"
+      "checksum": "068621ab95d687b877b943b521c85f6a"
     },
     "R/04-graficos.R": {
       "checksum": "9af46ff3fbf100ddef28a4f3c5fef2b6"

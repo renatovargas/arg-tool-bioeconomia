@@ -141,6 +141,7 @@ ui <- page_navbar(
   ),
 
   nav_spacer(),
+  nav_item(tags$a(class = "nav-link enlace-taller", href = "https://renatovargas.github.io/taller-bioeconomia/", target = "_blank", icon("arrow-up-right-from-square"), "Taller")),
   nav_item(tags$div(class = "esc-nav", uiOutput("badge_esc", inline = TRUE), input_switch("usar_esc", "Mi escenario", FALSE)))
 )
 
@@ -413,12 +414,12 @@ server <- function(input, output, session) {
     x <- cambios()
     if (!nrow(x)) x <- tibble(tipo = character(), cod = character(), nombre = character(), antes = character(), despues = character())
     x <- x |> transmute(cod, nombre = paste0("<span class='tipo-mini'>", tipo, "</span>", nombre),
-                        cambio = paste0(pill(antes), "<span class='flecha'>→</span>", pill(despues)))
+                        cambio = paste0(pill_corta(antes), "<span class='flecha'>→</span>", pill_corta(despues)))
     reactable(x, theme = tema_tabla, compact = TRUE, pagination = nrow(x) > 10, defaultPageSize = 10,
       language = reactableLang(noData = "Sin cambios todavía"),
       columns = list(cod = colDef("Código", minWidth = 85, class = "cod"),
                      nombre = colDef("Nombre", minWidth = 150, html = TRUE),
-                     cambio = colDef("Antes → ahora", minWidth = 190, html = TRUE, class = "cambio-celda")))
+                     cambio = colDef("Antes → ahora", minWidth = 150, html = TRUE, class = "cambio-celda")))
   })
   output$rc_tabla <- renderReactable({
     x <- comparacion() |> mutate(Indicador = if_else(Grupo == "Participación en", paste("Participación en:", Indicador), Indicador)) |>
